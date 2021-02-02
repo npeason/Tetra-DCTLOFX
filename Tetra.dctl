@@ -1,0 +1,94 @@
+
+
+/*********************
+*     Parameters     *
+*********************/
+
+//Parameters are "normalized" so all that sliders default to zero.
+//Parameters will be later offset to accomodate actual transform requirements.
+//eg: Red-Red will have 1 added.
+
+//Red Point
+DEFINE_UI_PARAMS(r_R, Red-Red, DCTLUI_SLIDER_FLOAT, 0.0, -1.0, 1.0, 0.01)
+DEFINE_UI_PARAMS(r_G, Red-Green, DCTLUI_SLIDER_FLOAT, 0.0, -1.0, 1.0, 0.01)
+DEFINE_UI_PARAMS(r_B, Red-Blue, DCTLUI_SLIDER_FLOAT, 0.0, -1.0, 1.0, 0.01)
+
+//Green Point
+DEFINE_UI_PARAMS(g_R, Green-Red, DCTLUI_SLIDER_FLOAT,  0.0, -1.0, 1.0, 0.01)
+DEFINE_UI_PARAMS(g_G, Green-Green, DCTLUI_SLIDER_FLOAT,  0.0, -1.0, 1.0, 0.01)
+DEFINE_UI_PARAMS(g_B, Green-Blue, DCTLUI_SLIDER_FLOAT,  0.0, -1.0, 1.0, 0.01)
+
+//Blue Point
+DEFINE_UI_PARAMS(b_R, Blue-Red, DCTLUI_SLIDER_FLOAT,  0.0, -1.0, 1.0, 0.01)
+DEFINE_UI_PARAMS(b_G, Blue-Green, DCTLUI_SLIDER_FLOAT,  0.0, -1.0, 1.0, 0.01)
+DEFINE_UI_PARAMS(b_B, Blue-Blue, DCTLUI_SLIDER_FLOAT,  0.0, -1.0, 1.0, 0.01)
+
+//Cyan Point
+DEFINE_UI_PARAMS(c_R, Cyan-Red, DCTLUI_SLIDER_FLOAT,  0.0, -1.0, 1.0, 0.01)
+DEFINE_UI_PARAMS(c_G, Cyan-Green, DCTLUI_SLIDER_FLOAT,  0.0, -1.0, 1.0, 0.01)
+DEFINE_UI_PARAMS(c_B, Cyan-Blue, DCTLUI_SLIDER_FLOAT,  0.0, -1.0, 1.0, 0.01)
+
+//Magenta Point
+DEFINE_UI_PARAMS(m_R, Magenta-Red, DCTLUI_SLIDER_FLOAT,  0.0, -1.0, 1.0, 0.01)
+DEFINE_UI_PARAMS(m_G, Magenta-Green, DCTLUI_SLIDER_FLOAT,  0.0, -1.0, 1.0, 0.01)
+DEFINE_UI_PARAMS(m_B, Magenta-Blue, DCTLUI_SLIDER_FLOAT,  0.0, -1.0, 1.0, 0.01)
+
+//Yellow Point
+DEFINE_UI_PARAMS(y_R, Yellow-Red, DCTLUI_SLIDER_FLOAT,  0.0, -1.0, 1.0, 0.01)
+DEFINE_UI_PARAMS(y_G, Yellow-Green, DCTLUI_SLIDER_FLOAT,  0.0, -1.0, 1.0, 0.01)
+DEFINE_UI_PARAMS(y_B, Yellow-Blue, DCTLUI_SLIDER_FLOAT,  0.0, -1.0, 1.0, 0.01)
+
+/*********************
+*     Transform      *
+*********************/
+
+__DEVICE__ float3 transform(int p_Width, int p_Height, int p_X, int p_Y, float p_R, float p_G, float p_B)
+{
+	float3 Color; //Working and output buffer
+	
+	
+	//Paramater vectorization and de-offsetting.
+	//Vectorization improves performance and simplifies code.
+    float3 red = make_float3(r_R + 1.f, r_G, r_B); 
+	float3 grn = make_float3(g_R, g_G + 1.f, g_B);
+    float3 blu = make_float3(b_R, b_G, b_B + 1.f);
+    float3 cyn = make_float3(c_R, c_G + 1.f, c_B + 1.f);
+    float3 mag = make_float3(m_R + 1.f, m_G, m_B + 1.f);
+    float3 yel = make_float3(y_R + 1.f, y_G + 1.f, y_B);
+    float3 wht = make_float3(1.f, 1.f, 1.f);
+
+
+	if (p_R>p_G) {
+            //r>g>b
+            if (p_G>p_B){
+            	//Multiplying a float by float3 returns float3.
+                Color = p_R * red       + p_G * (yel-red) + p_B * (wht-yel);
+            }
+            //r>b>g
+            else if (p_R>p_B){
+                Color = p_R * red       + p_G * (wht-mag) + p_B * (mag-red);
+            }
+            //b>r>g
+            else{
+                Color = p_R * (mag-blu) + p_G * (wht-mag) + p_B * blu;
+            }
+        } else {    
+            //b>g>r  
+            if (p_B>p_G){
+                Color = p_R * (wht-cyn) + p_G * (cyn-blu) + p_B * blu;
+            }
+            //g>b>r
+            else if (p_B>p_R){
+                Color = p_R * (wht-cyn) + p_G * grn       + p_B * (cyn-grn);
+            }
+            //g>r>b
+            else{
+                Color = p_R * (yel-grn) + p_G * grn       + p_B * (wht-yel);
+            }
+        }
+        
+    return Color;
+
+}
+	
+	
