@@ -85,7 +85,7 @@ __DEVICE__ float3 transform(int p_Width, int p_Height, int p_X, int p_Y, float p
 	if (p_R>p_G) {
             //r>g>b
             if (p_G>p_B){
-            	//Multiplying a float by float3 returns float3.
+            	/*Multiplying a float by float3 returns float3.*/
                 Color = p_R * red       + p_G * (yel-red) + p_B * (wht-yel);
             }
             //r>b>g
