@@ -1,6 +1,6 @@
 # Tetra-DCTLOFX
 
-The Tetra transformation, as described by Steve Yedlin A.S.C., originally implemented by for Nuke by calvinsilly, ported to Fusion by EmberLightVFX, and presented here as a DCTL for the ResolveFX DCTL plug-in.
+The Tetra transformation, as described by Steve Yedlin ASC, originally implemented by for Nuke by calvinsilly, ported to Fusion by EmberLightVFX, and presented here as a DCTL for the ResolveFX DCTL plug-in.
 
 ## Installation:
 
