@@ -12,9 +12,9 @@ The Tetra transformation, as described by Steve Yedlin A.S.C., originally implem
 1. Apply *DCTL* OFX from *ResolveFX Color* category to desired node.
 2. Select the Tetra.dctl file from *DCTL List*
 
-**Note:** Control parameters are "normalized" so they all default to zero. But, for the algorithm, values must correspond to their actual position on the cube. eg: the Red-Red value must be 1.0 at default, so 1.0 is added to the entered value.
+**Note:** Control parameters are "normalized" so they are zero at unity. But, for the algorithm, values must correspond to their actual position on the cube. eg: the Red-Red value must be 1.0 at unity, so 1.0 is added to the entered value.
 
 ## Credits:
 1. calvinsilly's Nuke implementation: https://github.com/calvinsilly/Tetrahedral-Interpolation
 2. EmberLightVFX's Fusion implementation: https://github.com/EmberLightVFX/Tetrahedral-Interpolation-for-Fusion
-3. http://www.yedlin.net/DisplayPrepDemo/DispPrepDemoFollowup.html
+3. Yedlin's video hinting at this transform: http://www.yedlin.net/DisplayPrepDemo/DispPrepDemoFollowup.html
