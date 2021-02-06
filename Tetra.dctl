@@ -24,43 +24,52 @@ SOFTWARE.
 ----------------------------------------------------------------------
 */
 
+
 /*********************
-*     Parameters     *
+*   UI Parameters    *
 *********************/
 
 //Parameters are "normalized" so all that sliders default to zero.
 //Parameters will be later offset to accomodate actual transform requirements.
 //eg: Red-Red will have 1 added.
 
+//DEFINE_UI_PARAMS([variable], [display name], [control type], [default], [min], [max], [increment])
+//See DCTL documentation. In Resolve: Help>Documentation>Developer, then DavinciCTL/README.txt
+
 //Red Point
-DEFINE_UI_PARAMS(r_R, Red-Red, DCTLUI_SLIDER_FLOAT, 0.0, -1.0, 1.0, 0.01)
-DEFINE_UI_PARAMS(r_G, Red-Green, DCTLUI_SLIDER_FLOAT, 0.0, -1.0, 1.0, 0.01)
-DEFINE_UI_PARAMS(r_B, Red-Blue, DCTLUI_SLIDER_FLOAT, 0.0, -1.0, 1.0, 0.01)
+DEFINE_UI_PARAMS(r_R, Red-Red, DCTLUI_SLIDER_FLOAT, 0.0, -3.0, 3.0, 0.001 )
+DEFINE_UI_PARAMS(r_G, Red-Green, DCTLUI_SLIDER_FLOAT, 0.0, -3.0, 3.0, 0.01)
+DEFINE_UI_PARAMS(r_B, Red-Blue, DCTLUI_SLIDER_FLOAT, 0.0, -3.0, 3.0, 0.01)
 
 //Green Point
-DEFINE_UI_PARAMS(g_R, Green-Red, DCTLUI_SLIDER_FLOAT,  0.0, -1.0, 1.0, 0.01)
-DEFINE_UI_PARAMS(g_G, Green-Green, DCTLUI_SLIDER_FLOAT,  0.0, -1.0, 1.0, 0.01)
-DEFINE_UI_PARAMS(g_B, Green-Blue, DCTLUI_SLIDER_FLOAT,  0.0, -1.0, 1.0, 0.01)
+DEFINE_UI_PARAMS(g_R, Green-Red, DCTLUI_SLIDER_FLOAT,  0.0, -3.0, 3.0, 0.01)
+DEFINE_UI_PARAMS(g_G, Green-Green, DCTLUI_SLIDER_FLOAT,  0.0, -3.0, 3.0, 0.01)
+DEFINE_UI_PARAMS(g_B, Green-Blue, DCTLUI_SLIDER_FLOAT,  0.0, -3.0, 3.0, 0.01)
 
 //Blue Point
-DEFINE_UI_PARAMS(b_R, Blue-Red, DCTLUI_SLIDER_FLOAT,  0.0, -1.0, 1.0, 0.01)
-DEFINE_UI_PARAMS(b_G, Blue-Green, DCTLUI_SLIDER_FLOAT,  0.0, -1.0, 1.0, 0.01)
-DEFINE_UI_PARAMS(b_B, Blue-Blue, DCTLUI_SLIDER_FLOAT,  0.0, -1.0, 1.0, 0.01)
+DEFINE_UI_PARAMS(b_R, Blue-Red, DCTLUI_SLIDER_FLOAT,  0.0, -3.0, 3.0, 0.01)
+DEFINE_UI_PARAMS(b_G, Blue-Green, DCTLUI_SLIDER_FLOAT,  0.0, -3.0, 3.0, 0.01)
+DEFINE_UI_PARAMS(b_B, Blue-Blue, DCTLUI_SLIDER_FLOAT,  0.0, -3.0, 3.0, 0.01)
 
 //Cyan Point
-DEFINE_UI_PARAMS(c_R, Cyan-Red, DCTLUI_SLIDER_FLOAT,  0.0, -1.0, 1.0, 0.01)
-DEFINE_UI_PARAMS(c_G, Cyan-Green, DCTLUI_SLIDER_FLOAT,  0.0, -1.0, 1.0, 0.01)
-DEFINE_UI_PARAMS(c_B, Cyan-Blue, DCTLUI_SLIDER_FLOAT,  0.0, -1.0, 1.0, 0.01)
+DEFINE_UI_PARAMS(c_R, Cyan-Red, DCTLUI_SLIDER_FLOAT,  0.0, -3.0, 3.0, 0.01)
+DEFINE_UI_PARAMS(c_G, Cyan-Green, DCTLUI_SLIDER_FLOAT,  0.0, -3.0, 3.0, 0.01)
+DEFINE_UI_PARAMS(c_B, Cyan-Blue, DCTLUI_SLIDER_FLOAT,  0.0, -3.0, 3.0, 0.01)
 
 //Magenta Point
-DEFINE_UI_PARAMS(m_R, Magenta-Red, DCTLUI_SLIDER_FLOAT,  0.0, -1.0, 1.0, 0.01)
-DEFINE_UI_PARAMS(m_G, Magenta-Green, DCTLUI_SLIDER_FLOAT,  0.0, -1.0, 1.0, 0.01)
-DEFINE_UI_PARAMS(m_B, Magenta-Blue, DCTLUI_SLIDER_FLOAT,  0.0, -1.0, 1.0, 0.01)
+DEFINE_UI_PARAMS(m_R, Magenta-Red, DCTLUI_SLIDER_FLOAT,  0.0, -3.0, 3.0, 0.01)
+DEFINE_UI_PARAMS(m_G, Magenta-Green, DCTLUI_SLIDER_FLOAT,  0.0, -3.0, 3.0, 0.01)
+DEFINE_UI_PARAMS(m_B, Magenta-Blue, DCTLUI_SLIDER_FLOAT,  0.0, -3.0, 3.0, 0.01)
 
 //Yellow Point
-DEFINE_UI_PARAMS(y_R, Yellow-Red, DCTLUI_SLIDER_FLOAT,  0.0, -1.0, 1.0, 0.01)
-DEFINE_UI_PARAMS(y_G, Yellow-Green, DCTLUI_SLIDER_FLOAT,  0.0, -1.0, 1.0, 0.01)
-DEFINE_UI_PARAMS(y_B, Yellow-Blue, DCTLUI_SLIDER_FLOAT,  0.0, -1.0, 1.0, 0.01)
+DEFINE_UI_PARAMS(y_R, Yellow-Red, DCTLUI_SLIDER_FLOAT,  0.0, -3.0, 3.0, 0.01)
+DEFINE_UI_PARAMS(y_G, Yellow-Green, DCTLUI_SLIDER_FLOAT,  0.0, -3.0, 3.0, 0.01)
+DEFINE_UI_PARAMS(y_B, Yellow-Blue, DCTLUI_SLIDER_FLOAT,  0.0, -3.0, 3.0, 0.01)
+
+//White Point
+DEFINE_UI_PARAMS(w_R, White-Red, DCTLUI_SLIDER_FLOAT,  0.0, -3.0, 3.0, 0.01)
+DEFINE_UI_PARAMS(w_G, White-Green, DCTLUI_SLIDER_FLOAT,  0.0, -3.0, 3.0, 0.01)
+DEFINE_UI_PARAMS(w_B, White-Blue, DCTLUI_SLIDER_FLOAT,  0.0, -3.0, 3.0, 0.01)
 
 /*********************
 *     Transform      *
@@ -79,7 +88,7 @@ __DEVICE__ float3 transform(int p_Width, int p_Height, int p_X, int p_Y, float p
     float3 cyn = make_float3(c_R, c_G + 1.f, c_B + 1.f);
     float3 mag = make_float3(m_R + 1.f, m_G, m_B + 1.f);
     float3 yel = make_float3(y_R + 1.f, y_G + 1.f, y_B);
-    float3 wht = make_float3(1.f, 1.f, 1.f);
+    float3 wht = make_float3(w_R + 1.f, w_G + 1.f, w_B + 1.f);
 
 
 	if (p_R>p_G) {
